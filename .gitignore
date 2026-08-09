@@ -1,4 +1,7 @@
 node_modules/
 logs/
 data/products.json.tmp
+.env.local
 .DS_Store
+
+.vercel
