@@ -1,0 +1,77 @@
+{
+  "products": [
+    {
+      "name": "Cargo Joggers",
+      "sizes": [
+        "S",
+        "M",
+        "L",
+        "XL"
+      ],
+      "colors": [
+        {
+          "value": "#6b7c5a",
+          "name": "Olive"
+        },
+        {
+          "value": "#111111",
+          "name": "Black"
+        }
+      ],
+      "desc": "Slim cargo fit, elastic cuffs.",
+      "price": "449",
+      "category": "Bottoms",
+      "id": "69142c0fe6c3",
+      "dateAdded": "2026-08-09T16:19:10.473Z"
+    },
+    {
+      "name": "Street Hoodie",
+      "badge": "new",
+      "sizes": [
+        "M",
+        "L",
+        "XL"
+      ],
+      "colors": [
+        {
+          "value": "#111111",
+          "name": "Black"
+        },
+        {
+          "value": "#c9c9c9",
+          "name": "Heather Grey"
+        }
+      ],
+      "desc": "Soft brushed fleece, kangaroo pocket.",
+      "price": "599",
+      "category": "Outerwear",
+      "id": "ca208da1d34f",
+      "dateAdded": "2026-08-09T16:19:10.465Z"
+    },
+    {
+      "name": "Classic Oversized Tee",
+      "badge": "new",
+      "sizes": [
+        "S",
+        "M",
+        "L",
+        "XL"
+      ],
+      "colors": [
+        {
+          "value": "#111111",
+          "name": "Black"
+        },
+        {
+          "value": "#f5f5f5",
+          "name": "White"
+        }
+      ],
+      "desc": "Heavyweight cotton, relaxed fit.",
+      "price": "299",
+      "category": "Tops",
+      "id": "69736660061f",
+      "dateAdded": "2026-08-09T16:19:10.375Z"
+    }
+  ]
+}

@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Admin — Upload New Arrival</title>
+<link rel="stylesheet" href="/style.css" />
+<style>
+  .admin { max-width: 640px; margin: 40px auto 80px; padding: 0 16px; }
+  .admin h1 { font-size: 1.4rem; margin-bottom: 20px; }
+  .field { margin-bottom: 16px; }
+  .field label { display: block; font-size: 13px; font-weight: 600; margin-bottom: 6px; }
+  .field input, .field textarea, .field select {
+    width: 100%; font: inherit; font-size: 14px;
+    padding: 10px 12px; border: 1px solid var(--line); border-radius: 10px;
+  }
+  .field textarea { resize: vertical; min-height: 70px; }
+  .row { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+  .hint { color: var(--muted); font-size: 12px; margin-top: 4px; }
+  .btn { display: inline-block; border: 0; cursor: pointer; font: inherit; font-weight: 700; padding: 12px 18px; border-radius: 10px; background: var(--accent); color: #fff; }
+  .btn.wa { background: var(--green); }
+  .btn.ghost { background: #fff; border: 1px solid var(--line); color: var(--text); }
+  .imgbox { margin-top: 8px; display: flex; gap: 12px; align-items: center; flex-wrap: wrap; }
+  .imgbox img { width: 72px; height: 90px; object-fit: cover; border-radius: 8px; border: 1px solid var(--line); }
+  #login, #app { max-width: 640px; margin: 60px auto; padding: 0 16px; }
+  #login h1 { font-size: 1.3rem; margin-bottom: 16px; }
+  .card { border: 1px solid var(--line); border-radius: var(--radius); padding: 16px; display: flex; gap: 14px; align-items: center; margin-bottom: 12px; }
+  .card img { width: 52px; height: 65px; object-fit: cover; border-radius: 8px; background: #eee; }
+  .card .info { flex: 1; }
+  .card .info strong { display: block; }
+  .card .info span { color: var(--muted); font-size: 12px; }
+  .err { color: #c62828; font-size: 13px; min-height: 18px; margin-top: 8px; }
+  .toast { position: fixed; bottom: 20px; left: 50%; transform: translateX(-50%); background: #111; color: #fff; padding: 10px 18px; border-radius: 999px; font-size: 13px; opacity: 0; transition: opacity .2s; pointer-events: none; z-index: 60; }
+  .toast.show { opacity: 1; }
+</style>
+</head>
+<body>
+<header class="topbar"><div class="wrap topbar-inner"><span class="brand">Admin</span></div></header>
+
+<div id="login">
+  <h1>Admin login</h1>
+  <div class="field"><input type="password" id="token" placeholder="Admin token" /></div>
+  <button class="btn" id="loginBtn">Log in</button>
+  <div class="err" id="loginErr"></div>
+</div>
+
+<div id="app" hidden>
+  <h1>Upload / edit a new arrival</h1>
+  <form id="form">
+    <div class="field">
+      <label>Product name</label>
+      <input id="f-name" required placeholder="e.g. Classic Oversized Tee" />
+    </div>
+    <div class="row">
+      <div class="field">
+        <label>Price</label>
+        <input id="f-price" required inputmode="decimal" placeholder="299" />
+      </div>
+      <div class="field">
+        <label>Category</label>
+        <input id="f-category" placeholder="Tops / Bottoms / Accessories" />
+      </div>
+    </div>
+    <div class="field">
+      <label>Colors <span class="hint">comma separated — use name:hex, e.g. Black:#111111, White:#f5f5f5</span></label>
+      <input id="f-colors" placeholder="Black:#111111, White:#f5f5f5" />
+    </div>
+    <div class="field">
+      <label>Sizes <span class="hint">comma separated</span></label>
+      <input id="f-sizes" placeholder="S, M, L, XL" />
+    </div>
+    <div class="field">
+      <label>Description</label>
+      <textarea id="f-desc" placeholder="Fabric, fit, care..."></textarea>
+    </div>
+    <div class="field">
+      <label>Photo</label>
+      <input type="file" id="f-img" accept="image/*" />
+      <div class="imgbox"><img id="img-preview" hidden alt="preview" /><span class="hint" id="img-hint"></span></div>
+    </div>
+    <div class="field">
+      <label class="row" style="display:flex;gap:8px;align-items:center">
+        <input type="checkbox" id="f-badge" style="width:auto" checked /> <span>Mark as NEW</span>
+      </label>
+    </div>
+    <input type="hidden" id="f-id" />
+    <button class="btn" type="submit" id="saveBtn">Save product</button>
+    <button class="btn ghost" type="button" id="resetBtn">Clear form</button>
+  </form>
+
+  <h1 style="margin-top:36px">Existing products</h1>
+  <div id="list"></div>
+</div>
+
+<div class="toast" id="toast"></div>
+<script src="/admin.js"></script>
+</body>
+</html>
